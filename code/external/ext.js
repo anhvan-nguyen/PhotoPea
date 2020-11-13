@@ -3367,6 +3367,8 @@ FromPS._paeth = function(A, Z, $) {
 ;
 function FromPDF() {}
 FromPDF.Parse = function(A, Z) {
+    console.log(A)
+    console.log(Z)
     A = new Uint8Array(A);
     var $ = 0;
     while (A[$] == 32)
@@ -3442,6 +3444,7 @@ FromPDF.solveIndirects = function(A, Z, $) {
 }
 ;
 FromPDF.render = function(A, Z, $) {
+    alert(123)
     var r = "CS cs SCN scn SC sc sh Do gs ID EI cm y v B B* BT ET Tj TJ Tf Tm Td T* Tc Tw Tz TL Tr Ts MP DP BMC BDC EMC BX EX ri".split(" ")
       , R = {
         J: "setlinecap",
