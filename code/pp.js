@@ -4618,7 +4618,6 @@
   ;
   function fx() {}
   fx.zG = function(Y, R, V, E, r, K) {
-      debugger
       while (R < V) {
           var J = f.rc(Y, R, 4);
           R += 4;
@@ -5840,6 +5839,7 @@
   }
   ;
   fx.clone = function(Y, R) {
+      debugger
       var V = {};
       if (Y == "TySh") {
           V.g = R.g.clone();
@@ -5873,7 +5873,6 @@
   }
   ;
   fy.ajW = function(Y, R, V, E) {
-      debugger
       var r = E;
       Y.rect = f.kC(V, E);
       E += 16;
@@ -6473,7 +6472,6 @@
   ;
   function a_() {}
   a_.nX = function(Y, R) {
-      debugger
       R.yD = !1;
       R.ED = 8;
       var V = new Uint8Array(Y), E = 0, r = 0, i, d$ = !1, dJ = !0, br = !1, hE = 0;
@@ -7226,7 +7224,6 @@
   }
   ;
   a_.aiI = function(Y, R, V) {
-      debugger
       var E = V, r, K = Y.yD ? 8 : 4;
       if (Y.yD)
           r = f.H5(R, V);
@@ -17325,6 +17322,7 @@
   }
   ;
   gq.uH = function(Y, R, V, E, r, K) {
+      debugger
       if (!(Y instanceof ArrayBuffer))
           throw "e";
       if (E == null)
@@ -19050,7 +19048,6 @@
   gq.B0 = {};
   gq.B0.B7 = !0;
   gq.B0.aw = function(Y, R) {
-      debugger
       a_.nX(Y, R)
   }
   ;
@@ -33045,6 +33042,7 @@
   }
   ;
   w.uM.gF = function(Y, R) {
+      debugger
       if (R == null) {
           var V = Y.bounds.v
             , E = V.Left.v.val
@@ -33103,6 +33101,7 @@
   }
   ;
   w.uM.acI = function(Y, R, V, E, r, K) {
+      debugger
       for (var x = 0; x < 4; x++) {
           for (var J = 0; J < 4; J++) {
               var t = 2 * (4 * x + J)
@@ -44993,6 +44992,7 @@
           }
       }
       if (Y.e == "editCurr") {
+          debugger
           if (r.BL != D.m6) {
               this.zn = r.BL;
               var W = new I(O.E.z,!0);
@@ -45043,6 +45043,7 @@
           }, R, V, E, r)
       }
       if (Y.e == "newED") {
+          debugger
           var a = V.t[Y.Qe]
             , Q = a.add.TySh
             , N = this.wl(V, [Y.Qe]);
@@ -45155,7 +45156,6 @@
   }
   ;
   D.hM.prototype.K_ = function(Y, R, V, E, r) {
-      debugger
       this.P3 = Y;
       this.gL = V;
       this.caller = R;
@@ -45368,7 +45368,6 @@
   }
   ;
   D.hM.prototype.tQ = function(Y, R, V, E, r) {
-      debugger
       var K = Y.PD()
         , J = K[0]
         , t = K[1]
@@ -45576,7 +45575,6 @@
   }
   ;
   D.hM.prototype.rP = function(Y, R) {
-      debugger
       if (R != fG.xM)
           return;
       if (this.a5) {
@@ -45615,6 +45613,7 @@
   }
   ;
   D.hM.prototype.sf = function(Y, R) {
+      debugger
       for (var x = 0; x < R.length; x++) {
           var V = R[x]
             , E = V.Qe
@@ -45659,7 +45658,6 @@
   }
   ;
   D.hM.prototype.EM = function(Y, R, V) {
-      debugger
       if (V == null)
           V = !1;
       var E = this.UY.add.TySh;
@@ -45692,6 +45690,7 @@
   }
   ;
   D.hM.prototype.yQ = function(Y) {
+      debugger
       if (this.UY == null || this.$r)
           return;
       var R = this.FX.selectionStart
@@ -50785,7 +50784,6 @@
   }
   ;
   D._.prototype.H1 = function(Y, R, V) {
-      debugger
       Y.PD();
       var E = [];
       if (V == null)
@@ -53501,6 +53499,7 @@
               if (t.add[bi.oh.qL[x]])
                   y = bi.oh.qL[x];
           var X = t.add[y];
+          debugger
           if (S == "TySh")
               B = bg.BW(50, 50, r.MF);
           var C = new il("Layer Type",this);
@@ -54956,6 +54955,7 @@
           this.$E(C.data, V)
       }
       if (K == j.sY) {
+          debugger
           var b1 = V.FD();
           b1.rect = new gE(0,0,V.d,V.b);
           b1.buffer = w.T(b1.rect.X() * 4);
@@ -58066,6 +58066,7 @@
           return fE.names[c];
       var Q = cA.Lr;
       if (R == "make") {
+          debugger
           if (E) {
               if (r == "AdjL")
                   return [6, 1];
@@ -62542,6 +62543,7 @@
           }
       }
       if (Y == "ClrH") {
+          debugger
           var am = R.rect.clone();
           am.x = am.y = 0;
           var cO = V.Rds.v;
@@ -66183,7 +66185,6 @@
   }
   ;
   function aP(Y) {
-      debugger
       this.un = "psd";
       this.RG = !1;
       this.name = Y;
@@ -66414,7 +66415,6 @@
         , c = new Uint8Array(gq.dF("PSD").p$(this, 0, 0, [!0, !1]));
       this.Bd(E);
       this.C = r;
-      debugger
       var M = new aP(this.t[top].getName());
       gq.dF("PSD").aw(c.buffer, M);
       delete M.add.artd;
@@ -67131,7 +67131,6 @@
   }
   ;
   aP.prototype.Bd = function(Y) {
-      debugger
       for (var x = 0; x < this.t.length; x++) {
           var R = this.t[x];
           if (Y.indexOf(R) == -1) {
@@ -67271,7 +67270,6 @@
           E = Y.Hght.v.val;
           r = Y.Rslt.v.val
       }
-      debugger
       var t = new aP((Y.Nm ? Y.Nm.v : em.get([11, 7])) + ".psd");
       t.d = V;
       t.b = E;
@@ -67296,7 +67294,6 @@
   }
   ;
   function cJ(Y) {
-      debugger
       this.P3 = Y;
       this.k = 0;
       this.q = new gv(0,0);
@@ -70095,6 +70092,9 @@
               V: new gE,
               Bk: new gE
           };
+    debugger
+    //   var J = document.querySelector('canvas')
+    //   console.log(J)
       var J = O.w("canvas", "");
       J.width = K.d;
       J.height = K.b;
@@ -70121,6 +70121,7 @@
   }
   ;
   bp.xm = function(Y, R) {
+  debugger
       var V = {
           R: [],
           P: []
@@ -71605,7 +71606,6 @@
   }
   ;
   bg._G = function() {
-      debugger
       return {
           classID: "TxLr",
           Txt: {
@@ -73346,7 +73346,6 @@
   ;
   function CSS() {}
   CSS.aie = function(Y, R) {d
-    debugger
       var V = Y.add
         , E = V.vmsk
         , r = V.vstk
@@ -74325,6 +74324,7 @@
           else
               console.log(Y, R)
       } else if (Y.r1 == "TextItem") {
+          debugger
           var W = Y.G.add.TySh
             , n = W.VW
             , $ = bg.mu(n)
@@ -74534,6 +74534,7 @@
           } else
               console.log(Y, R, V)
       } else if (Y.r1 == "TextItem") {
+          debugger
           K.m = D.m6;
           var a = Y.G
             , A = a.add.TySh
@@ -80598,6 +80599,7 @@
   }
   ;
   iO.prototype._M = function(Y) {
+      debugger
       this.f(new I(O.E.L,!1))
   }
   ;
@@ -81274,7 +81276,6 @@
   }
   ;
   fR.prototype.ahQ = function(Y) {
-      debugger
       if (Date.now() - this.Sp < 2e3)
           return;
       this.Sp = Date.now();
@@ -81293,7 +81294,6 @@
   }
   ;
   fR.prototype.a0H = function(Y) {
-      debugger
       var R = Y.target.response
         , V = gq.Q2(R)
         , E = gq.dF(V)
@@ -81303,7 +81303,6 @@
   }
   ;
   fR.prototype.PS = function(Y) {
-      debugger
       var R = Y[0]
         , V = gq.Q2(R)
         , E = gq.dF(V)
@@ -85686,7 +85685,6 @@
   }
   ;
   is.prototype.KK = function(Y) {
-      debugger
       var R = this.Sy.u();
       if (R == this._3.length) {
           var V = new aP(this.os.u() + ".psd");
@@ -98517,7 +98515,6 @@
   }
   ;
   ih.iq = function(Y, R, V, E) {
-      debugger
       var r;
       if (Y.name)
           r = Y.name.split(".")[0];
@@ -99432,7 +99429,6 @@
   }
   ;
   function dD() {
-      debugger
       eA.call(this);
       this.ul = {
           x: 0,
