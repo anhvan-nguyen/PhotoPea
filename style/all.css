@@ -1,4 +1,21 @@
 
+:root {
+  --bg-color: #474747;
+  --bg-panel: #303030;
+  --bg-canvas: #252525;
+  --bg-input: #252525;
+  --bg-bbtn: #606060;
+  --bg-bbtnOver: #6a6a6a;
+  --brdr: #252525;
+  --text-color: #d5d5d5;
+  --brdrLgt: rgba(255,255,255,0.15);
+  --brdrDrk: rgba( 0, 0, 0,0.6);
+  --alphaDark: 0.25;
+  --gs-invert: 0.78;
+  --sh-clr: rgba(0,0,0, 0.45);
+  --sh-dy: -1px;
+  --img20: 16px;
+}
 
 	*{
 		border-style: solid;
@@ -8,7 +25,7 @@
 		column-rule-color: var(--bg-panel);	
 	}
 	
-	body, button, input, textarea, select {  font-family: "Open Sans", Sans-Serif;  }
+	body, button, input, textarea, select {font-family: "Open Sans", Sans-Serif;}
 	
 	.autoscale
 	{

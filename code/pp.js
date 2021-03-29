@@ -70351,37 +70351,37 @@
           var B = new cd.Ws(Y,R,this.G$,x,E,o,V == 1 ? r : null);
           G.push(B)
       }
-      if (V == 2) {
-          var L = Y.Curve.Points
-            , u = r[0]
-            , y = r[1]
-            , S = r[2]
-            , X = r[3]
-            , N = r[4]
-            , k = r[5];
-          for (var x = 0; x < G.length; x++)
-              for (var d = 0; d < G[x].ZH.length; d++)
-                  if (!(x == 0 && d == 0))
-                      G[x].ZH[d].Cg = !1;
-          var B = G[0]
-            , P = B.ZH[0];
-          B.Cj.Fb(0, 0);
-          P.Cj.Fb(0, 0);
-          for (var d = P.start; d < P.end; d++) {
-              var Z = B.R3[d]
-                , s = Z.Cj.x;
-              Z.Cj.x = 0;
-              for (var _ = Z.$S; _ <= Z.Ce; _++) {
-                  var b = B.vE[_]
-                    , q = b.V.d / 2;
-                  b.Cj.x += s;
-                  var e = cd.a6t(u, (N + b.Cj.x + q) % X);
-                  b.Cj.x = e[0] - q * e[2];
-                  b.Cj.y = e[1] - q * e[3];
-                  b.I2 = Math.atan2(e[3], e[2])
-              }
-          }
-      }
+    //   if (V == 2) {
+    //       var L = Y.Curve.Points
+    //         , u = r[0]
+    //         , y = r[1]
+    //         , S = r[2]
+    //         , X = r[3]
+    //         , N = r[4]
+    //         , k = r[5];
+    //       for (var x = 0; x < G.length; x++)
+    //           for (var d = 0; d < G[x].ZH.length; d++)
+    //               if (!(x == 0 && d == 0))
+    //                   G[x].ZH[d].Cg = !1;
+    //       var B = G[0]
+    //         , P = B.ZH[0];
+    //       B.Cj.Fb(0, 0);
+    //       P.Cj.Fb(0, 0);
+    //       for (var d = P.start; d < P.end; d++) {
+    //           var Z = B.R3[d]
+    //             , s = Z.Cj.x;
+    //           Z.Cj.x = 0;
+    //           for (var _ = Z.$S; _ <= Z.Ce; _++) {
+    //               var b = B.vE[_]
+    //                 , q = b.V.d / 2;
+    //               b.Cj.x += s;
+    //               var e = cd.a6t(u, (N + b.Cj.x + q) % X);
+    //               b.Cj.x = e[0] - q * e[2];
+    //               b.Cj.y = e[1] - q * e[3];
+    //               b.I2 = Math.atan2(e[3], e[2])
+    //           }
+    //       }
+    //   }
   }
   cd.x9 = function(Y, R) {
       var V = Y["OS/2"]
@@ -77216,6 +77216,7 @@
   }
   ;
   a5.prototype.n5 = function(Y) {
+      debugger
       this.f(new I("click",!1))
   }
   ;

@@ -1,0 +1,64 @@
+function a7(N) {
+  eL.call(this, [[7, 11], [7, 13]][N], ["redge", "magiccut"][N]);
+  this.ip = N;
+  this.GO = {};
+  this.SS = null;
+  this.Na = null;
+  this.bk = null;
+  this.p2 = null;
+  this.ig = null;
+  this.s7 = [];
+  this.Zc = -1;
+  this.k4 = y.w("div", "form hbar");
+  this.body.appendChild(this.k4);
+  this.MT = new cu;
+  this.MT.parent = this;
+  this.MT.k(y.E.L, this.o8, this);
+  this.k4.appendChild(this.MT.j);
+  var G = N == 0 ? ["#ffffff", "#888888", "#000000"] : ["#00dd00", "#888888", "#ff0000"];
+  G = G.concat(PIMG["tools/hand"], PIMG.zoomIn, PIMG.zoomOut);
+  var b = N == 0 ? [[12, 45], "Unknown", [12, 46]] : [[12, 45], "Erase", [12, 46]];
+  this._Y = new aQ(null,G,b,28);
+  this._Y.k(y.E.L, this.S6, this);
+  this.k4.appendChild(this._Y.j);
+  this.q1 = new ho([7, 9],0,50,null);
+  this.q1.parent = this;
+  this.q1.k(y.E.L, [this.uC, this.aw][N], this);
+  this.k4.appendChild(this.q1.j);
+  var E = this.a1K = new bm([2, 2],!1,null,!0);
+  E.k("click", this.MY, this);
+  this.k4.appendChild(E.j);
+  var _ = this.adT = new bm([12, 90],!1,null,!0);
+  _.k("click", function(I) {
+      alert(N == 0 ? eU.get([15, 7, 1]) : "Mark the object with Green, background with Red. Two colors should never touch.", 5e3)
+  }, this);
+  this.k4.appendChild(_.j);
+  var H = new bm("Tutorial",!1,null,!0);
+  H.k("click", this.a95, this);
+  this.k4.appendChild(H.j);
+  var F = y.w("span", "form");
+  this.k4.appendChild(F);
+  F.setAttribute("style", "position:absolute;  right:0px");
+  this.eP = new aQ([12, 46],["checker", "#ffffff", "#000000"]);
+  this.eP.k(y.E.L, this.eh, this);
+  F.appendChild(this.eP.j);
+  this.lr = new bC(null,[[6, 13], [6, 2], [17, 2]]);
+  F.appendChild(this.lr.j);
+  this.rG = new bm("OK",!1,null,!0);
+  this.rG.k("click", this.c8, this);
+  F.appendChild(this.rG.j);
+  var f = y.w("div", "flexrow");
+  this.body.appendChild(f);
+  this.XO = new ca(!0);
+  this.Wv = new ca;
+  this.XO.kj(this.Wv);
+  this.Wv.kj(this.XO);
+  this.XO.k("mousedown", this.sp, this);
+  this.XO.k("mousemove", this.zc, this);
+  this.XO.k("mouseup", this.YF, this);
+  this.XO.k("zoom", this.o8, this);
+  this.Wv.k("zoom", this.o8, this);
+  f.appendChild(this.XO.j);
+  f.appendChild(this.Wv.j)
+}
+// a7.prototype = new eL;

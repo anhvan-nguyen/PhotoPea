@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <link rel="stylesheet" href="style/all.css" />
+  <link rel="stylesheet" href="style/family.css" />
+  <!-- <script src="lib/fabric.js"></script> -->
+  <script src="UnionFind.js"></script>
+  <script src="aV.js"></script>
+  <script src="l.js"></script>
+  <link>
+</head>
+
+<body>
+  <div id="app" class="flexrow app">
+    <img id="photo" />
+    <div class>
+      <div class="window magiccut" style="left: 0px; top: 0px;">
+        <div class="whead"><span class="wname">Magic Cut</span><span class="cross"
+            style="background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAgMAAAAhHED1AAAADFBMVEUAAAAAAAAAAAAAAAA16TeWAAAABHRSTlMA/8ky3+Rv8AAABVtJREFUeJyt289x22gMxmGNdNLs0F1oz7nw4Nk6mN0Z70EF+JAS1IT6UAlugunAtxQRSdYfit+LFz+slkcM/A3xxJZIAFks/rfrj0ryXyL250fhgJ8ieX/gP78a2uTl8M4P6ETyenjjB/QieTN8/8AHjCJ5P4i6gms1tMnLYwwjdCJ5fYxhhF4kb44xjDCK5CMBRjgRzJOX5xhE6ETy+hyDCL1I3pxjEGEUyWcCiPBF8Ji8vMQQQieS15cYQuhF8uYSQwijSL4QIIQrwTR5eYsBhE4kr28xgNCL5HsMIIwi+R7LEe4E9+RpLEXoRPI0liL0InkaSxFGkTyNZQjTcq/Jj7EEoRPJj7EEoRfJj7EEYS+SHwgShOXQJq9mMYuwFsndLGYRNiK5n8Uswl4kzwgswpzglDwnsAhzglPySxMzCHOCU3J7qEGYEwzDv+IOYoSWYPixWLWnhgjt3Q7Hu/3kCC3B38foK0dQBIsCgiRYFBA0QQFBExQQNAFHCAg4QkSAESICjBARUISQgCLEBBAhJoAIMQFDMAQMwREgBEeAEBwBQbAEBMETAARPABA8QY6QEOQIGUGKkBGkCBlBhiAI5n8sHoF8hVsE9VwwvyyCvT2AAAg8AnuKMQiEwCIQAoeACBwCfZALERiBQWAEMQIkiBH4s2yAQAlCBEoQIWCCCKHyOC8ROEGAwAk0QoFAI5TeaBRChUAiVAgkQoVAIpQIFEJz+QZDi9BcvsUBEHyTJUfI2jwpQtZoShGyVleKkDXbMoS83Zcg5A3HBCFveSYIedPVI5C2r0UgjWeLQFrfFoE03x0Ca/8bBDaAMAhsBGIQ2BAmRqBjoBCBDqJCBDoKCxHoMC5C4OPAAIEPJAMEPhINEPhQViMUJqIaoTCT1QiFqbBGKMylJUKFQCJUCCRChaBt+Q/zfsF/uINt6QBh8E/l5+W/QuUA+XuwKxwgfxO3hQPk30IBIfhr5AcEnwc7fEDwibTFBwSfiRgh/FSmB4TfCzt4QPjNtIUHhN+NEMF8O7MDzPPBDh1gnlC26ADzjIQQ7FMaOcA+J+7AAfZJdQsOsM/KACF5Ws8PSN4XdukByRvL9jkCgJC+tT1JkCOkb64ZQvrunCCAt/cnCTIE0MHwCKCHYhFQF+dJAo+AOlkOQfTS2pBBUN08cVMlgoOIxQiqoynuKkaQPdUCgu7qFhB0X7mAoDvbBYSgt44Rou4+RojmCxghmnBghHDGAhHiKQ9EiOdMECGedEEEM2tDCG7ahxDcvBEhuIknQrAzV4Dgp74Awc+dAYKffAOEZPaeImTT/xQh2z9IEbINiBQh3cFoEx72B/ItkPYWHzYY8j0UkfFhz593jcQ9TrsyYBfHIpBtIItA9pEsAtmIsghoJ8sgsK0wg8D20gwC24wzCHA3L0Sg24EhAt1PDBHohmSIgHc0AwS+JRog8D3VAIFvygYIhV1diVDZFpYIlX1liVDZL5AI7YaDaaK3CO9izcQ00VuEg9jyMHOEBuFU7hzBzREahFO5cwQ7R5gjnMvdixhFOJe7ETGI8FXuWsQgwle5SxGDCJdy9yLGEC7lbkQMIVzLXYtYdD0gXMtdilh4TRFu5e5FLLp6Ve5GxKJrMoG6l7sWseia/J+PNxEEA7VRlTuKWHTdEQ4iCGaKN4RpuZ2IRdet3jcRRDPFa73vIohmitd6DyKIxqqdKrfDBLd630QQjlVHVe6ICa71HkQQTpY7VW6HCS71zstdcYKveptyPwuT5V6V+1oYrneq3JfCcH2lyl3tC8P1UZX7WRiu96rc18J+QafKfRGx6FrVdgnE9evZA749e8D9+g2w4Fwzf7ERbQAAAABJRU5ErkJggg==);filter:invert(1);"></span>
+        </div>
+        <div class="body">
+          <div class="form hbar"><span class="fitem brushbutton nopadding"><button class="nopadding"
+                style="position:relative;"><img class="gsicon"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAeCAYAAAC49JeZAAACBUlEQVRYR92WsUocURSGv8MWRggKm8ZSi+BDxNIga2GjIKJ5gMQghNiK0bQRwUIfQEUE06TQwrR5gJQhoGkCNi5EAmqxXLm7s+5l2Jl77p1hjZlqBs75z3f/OedwhUf4iJL5OTAFTAMjwDnwGfgC/FRqlBamgd4WkdfGmPuiIoLzvQO8KY1IIZQH3Qf8AoYUOhfAMHCriC0ckgd9LCK1HIdJOX4CTBYmUghkQY8Dp4r8dMhL4GtEXlBKV2gROTbG1NpKKUfTDrvfPXE7y+nO1AV50AzWDHe4qpORCx3gcIu2tVUeFjrSjoeBFpEbY4xdea6DWXva7Wm78p5EHladluXKe+CTWqUTuAxsROQFpWRBDwB/Qnu6Wq0O1uv1qyCCiOC8/rP3jKMAzZnkPhKQEhfqG5p5YM/neKVSWWg0GvtxCOFZPmiraG94a8BcF/kDYLXXNz0NtMtqr6VPgb/J9TTcphIyQqFLKFlc4r+GXgHOgPawPUveJxLfvgOzwI/iPvoVNE5b4HVgwYEeBT4Ab4FLf5lyI/Kg+4FN4HdS0nX6BfAKeAdcl4vkV9M4bVXS7dHc3468+xf8VQtGxELbQ9jnI2Bb5RBYBL4V5FGlx0Knxd1DqAoXCSoT2u35Ikze3Bjo9oDuJu1g22MLWPqXVl63QUzv6bFe9bOF0Trt/WW9DHiU0HfPRZEfCiH5vwAAAABJRU5ErkJggg=="
+                  style="width:36px; height:24px"><span
+                  style="position:absolute;  bottom:2px;  right:4px;">▼</span></button></span><span
+              class="fitem bbmenu"><button class="fitem bactive" style="padding:2px" title="Foreground"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAR0lEQVRIS+3SsQkAMAwDQWX/GTNLMoJ4MK7erRCCwyc3L4t3HJzWlnRaNJJKigV8GkzWCpI2IZxLislaQdImhHNJMVkrrJN+a5U0LapDhi4AAAAASUVORK5CYII="></button><button
+                class="fitem" style="padding:2px" title="Erase"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAARklEQVRIS+3SwQkAQAgDQe3eru9KCAvia/2GEBjsmXl1eO3gtrak26IlqaRYwKfBZKkgaRLCuaSYLBUkTUI4lxSTpcI56QcyzEih5hA2DAAAAABJRU5ErkJggg=="></button><button
+                class="fitem" style="padding:2px" title="Background"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAARUlEQVRIS+3SwQkAQAwCQdN/0XclyELIa/MVEYbMS14Obxzc1pZ0WzSSSooFfBpM1gqSNiGcS4rJWkHSJoRzSTFZK5yTfk6dN+V7KwwfAAAAAElFTkSuQmCC"></button><button
+                class="fitem" style="padding:2px"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAHlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3KG9qAAAACnRSTlMA/w/xgcApBeBI4LcAVQAAAyNJREFUeJzt2s+P0kAUB/CGIITjpMMGb03cgx5rUK8lstG9UQN6hQhmj3tw945u1CN78cd/K+30xwyF+fW+MRo7p5ahn7z2zaNlOkFg0/oX8d3O6puWbcMYG0Y4r7Pdg+wNDuxmHhviwEc5yBIYOBHgU7F3+4EMpgLk+c55zMZLIrgV4Cjb7mc6vyZ5feGxMNsRCXpLAjsyuBLBLmFgkaB3MFBJEAIsEsQ8nN7FfNcEmT84KX8QZLDjD3arHwQQeF9dewzYF1d/BwNFRbAZDHwgjjuDgat6AGPAosSGMDBtIjQwBoPHkH8TvP0VQcFNzIZLIJiX0xgIisFq9RhlBRb1/hUGSuWJAVOxafUUZQWqGW/BFmzBFmzBFmzBFmzBFvzLwOxxf0AFM6Rbbs+q/+UE8HkQvC+3eTG1QQJHu145mcTCZBCTQTaqPGXbHzzR/kPwGg3u6rlZDDiTBjwE5NVcEQgMX22qbQgoNxuwb2bcwMDM/FlwvZhGSDAbUc+WQDAfUXwJA3tx/vkYBpY3igQFFjNEyhQRCayKMgGBadnDQWB960kwYFx1cQwo9SUQULrzcgiYHgmRBE6kTo4AV3JvAgC7ci8HgMpFLEKkgTfNEGlgbyv3J3SwfkitQiSCSlryEImgMhTzEKlgI0QqmL96l0OkgsHVQYhksLjzVSGSwfovjQiRDqpp4XRQHTlO7QR4Yz7SDexszYc6gWpBI8CB+VA30DstJ8Gu+Vg3UC1oABg8RoNqQQPAg4IGgH5p0YB+I0cH+hT0SAf6FLT+7a1HQevfL3sU9EMt6JGWF3rQfeTM9KB7QSd60Lmgw8gAuha0eRHBvRt4ZgQd02LISdbcRo7Fyg6nEK2WTbiEaL6EjiEmNmDw0tobRVZgPb1saoZfhqpdmSmXM96XS2rnDa1XxH60Az/ZepZ5cVkPa3XSX+w9q5N2XLD70wg6LinumCrQeZn7QH+TDhNHb38ZY+AJ522t8cZeq7w3Jz0e+XinRf917euj1/HOM76snacNLrz054JsYfaBN/9B8vbtyWspuvl3KpeT08VnFn5bTC8j/Rd/A77Qy3Uri4NyAAAAAElFTkSuQmCC"
+                  class="autoscale gsicon"></button><button class="fitem" style="padding:2px"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALAAAACwBAMAAABdmfltAAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMA/+UUmE52sBY+AAAE+UlEQVR4nNWb21bqMBCGu6w8AAXvkY33Knof3HgPW3z/V9lARfPPIZmcWMu56+nr9M80mTaTrrNY/7ndLpf3w3K53X4+mi6xUA9v91PPhtV7DXZ/WE6ZLYvR/eGeY89ul6Ff32TsyVYf+dwXxd0vp/9mYvt/IezJHrLk6AMyfMuRQbZwc8g2bjrZyk0l27mJ5Gg8+PZg576kcKdTczxPgu8Ft2Fn4/abNO50OrfJnCTwaCaZEwUezSBznyjwaENcjAwhThYV4zbL4aO5iBDJEXGxSGRktdxowfbLa7nRgu33rF61ff9YP/br18NWvfefdIchkTimGckuyw6vmHovMlp1WXRYTCDkdEN1WXJYG+PFzEBxWYrhQc1KXgWyEsu3wpmBnnYi+OHEM/mJ4R5cGA/mtvNiI4NAlq5gTRfPzXgLCs3HY80wLLA+Vog41nSWfIHnH46ds08UeDQm8x27Nz3DmCzQfpZpQZUwjuj8raLNR5Sw5iBcDKIFVSIhHyORQbQgStgd5i47OEqUSHCYuQxaECVSHGYugxZEiSSHmcvOO4T9RJrDzGU/4DAYxc4vZHvtciKxUwmKoZKeyOoBzy5HpWOqYyixPCSGwCoAJZabLgieyCLjkyhNFwSja99aosRKchAGoxZO3KsEcRiMWlx82xuUiIBRi0t3ARJrmV0EDE89jPt6UZ9EMGoxygltp2aMETBGluNPwUZZIxgb6g/ftcgF33D3oEHVHjMGBpHPoQXq6N8RMXDHMHArVeI4GBQ9PTgEhf5JFQVDDLiOqO7yweDg4rjjiT5CJhjes1mH2gzqZXEwtN6prfxoCwyjcTAF+TealYB9TQcSxosSsB8Fx0CGMHYlYAiLHYIDKVAcTFz07xP6lxEHg6gOlAnlVnFwh61VEbwB8JO3pXdBJvDeQ83IVhEYffTBizLwDYA39cB+gM0B7K4BnhrNBN6Vgf1Xbw5RXRE8XAf8WAb2B6ffCPZPKgTDNZ3lpCxwRSn8a35j410FXPXNa9YJXQXsOt0EELUrjSB7b2tRD9xwlH7ytirmFTNymyIwPnyz3O22HhjTWHgPa+bHjTL6Hb1PAZh+G7T5auqwLat9553CYE+2s8G+h3cd+6DMB9NPXPitUOvrf9GRD0qXD2YcCL9af1hOTw6BXOmf0PgKb9ieLLDv35zdqtJ/t/HBQZxFLhiCa2wqaM46/zbdeRcEYJ2/sV+CCn9ok8Eg8eUFhqeo8cf7TtpZ4x/9xTmcrqgwq+C+9qLw5fMgPwEAz1E+c/NDsMywBMHy/IptTigIlmeEqMiGSjBi+vUb5Y5Gwyf2G+lZPWIy9MuXkkwfl83yOu8QmfQsmpfGJtrjsZKZdOx4S6bSAxPpRZP/oan/rqRcgThMQyq7wIKWV9D3lpaE5Naw8NeWaBEq5PONVt3wwZiW3WTWCTn+TPSUrMomqQNjRV45tViSgBN6Uk71mKgfK6RLr3eT+0Ve+pdcoefEE4VixRBZqCnUgl8or0yrgtRiXyoITanb1AdLsSLUXmmqv6xy0e3qnbkr1saGRnelTNhWzRvqXdTCZkP9cTgdaVWK3a54XKq8tZkLc9sV6LdbUtBsEUS7ZRsZkWHNqJOXxpgX3bRazNNu+VG7BVPNlni1W5TWbhldu4V/7ZYqds0WV3btloO2W8DaKUtuy7Ejuski4bOt/WXNa9Ml/wE5YCpbayJoEAAAAABJRU5ErkJggg=="
+                  class="autoscale gsicon"></button><button class="fitem" style="padding:2px"><img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALAAAACwBAMAAABdmfltAAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMA/90TkEkQ3c9eAAAEwElEQVR4nNVbSVbjMBDVw+kD2IG9CbAPBPaCDvu4O7n/VRrHhKgGOTVIr1/+ztNX6VdpsFQKQYLmsP1Yrdp2tXrcHtaiTySs+4/7NkH3+FmCu9kD1m9uNzVLW4D67YOnHfH4186bM/dktJG2+TNHO+LJJEczI8OPHAZmCa+FuXmX8LbtrZJZyqtllulgUONiPKR4kvO+anjb9reUdzHbLii6KONtlLxfzDKZVQJPEMmsFHiCQGa9ECMEYhiEGHFRjIWNt23jBSHETRnjQtM2eW7CrP9snpsw67+X7Ffbz8Nm3WwO+2227Ae9wWAi8TXNUJvMG0wHzcwgmzWZN5gbMflxNmsyZ3CXcfYrZ0TGZM7gLjsreePe5k1mGl23y/GG8IthjuybtNHN8bLMt+x7Sl6WmfuCuu5iJ0s7AMZ91HWCYYFEHeM+4jrJTIR2hpG8MygFnkBkviNl4zdmupQU2DNEixuDEEeDsBjYIPw8ynhplKJQxkoo5mMoMpAWKCZknvs2GdkUwdPBbDAxGcQFUkJjMDEZaIGUUBlMTI7JIxSNKoNJYKQBB4ON7fzmkP28yddFBKTkOvNAOI1OgHx/Nuw5q5EQ0EfngIMaKV03ArrvR2RYE7XrqGknLaHEBiWwFpG9a1ACa3GybXArgbQ4ee+eK00JUOuOq0a0EUM/7eg9feuYACMr0lqQUVYK4KgHequ3Et9Q84BDTcE2AnjqGFpAHavEAcbWkYYWZQOpOAgKYxSPADEQA1I92omBgX1AnbHZd0jSZYDR1tl5offGeEtFd/iOEqUFLT3EqaYdGqF7DzGIgjXUPHqIQVjs8KUDyMSU2NGgAxI1AmVc0QbDoAfErmiD8daDIDH38hOGhGqJrlyANqbEvY/4BhC/1yG+BcTRR7wQEbdCZInT4Nv5iNOm11058dpHnHYW10fcAgInMfgmSF4yEReUohrxdUfFNTbptNssSPwfOno38ZBc9T5iOJhWI35OrgrOK5aoGBdg5avN3cA01kectrWK82MwDy83o9/hchwAPx1rPA93AP8bpL4s9p83xteArs1ILbwL5IfSDvyLC34oS/399wE5M9qJCQ8oqdQKy1hzsNhUaE1oasL0jgnUvqGI94CiU/8LxOmtxCC4JlctaFkGgHpHWokyq7HfgjIrtGrAtWKuFiVWvO+4myXW6E/GccvgSvDL8VD4AvsgPwEA6uHfuTkzPHu1gEqc24J7T4jfEcIbhe79vOR7uLkVswwZwBqnTnrJPhEB2pVKiTY9fbu8MXmERHLtS0MXDfCZZycddryerfSZjXTX5v/c1n8giRv2/AocUjjVJHIcrMHoQ9xucUqINYeFNtvhQskZ4KwbOhjjBCRjnlCkdcKvmDKbuA6MJHlZcrE4AWlamiF7jNWPJGzp8934fpGm/qkz9CL7IpOsqMwpzI09THqlLgsyF/tsfqUibzM/WLIprPJM03xj5XNYpbmxc6N7Jk1Yls0717tkE5sF+cfz05Faqdj1kserpbvXS9Cvd6Sg2iGIesc26h000R+NER+6qXWYp97xo3oHpqod8VIcSlP/FcrU0PPWO/hX76hiqHa4MtQ7DlrvAGuO2k87UVc5JHzEJj3WvBF98g8n+QTj6NOXVAAAAABJRU5ErkJggg=="
+                  class="autoscale gsicon"></button></span><span class="fitem rangedropinput"><label class="flabel"
+                style="cursor:col-resize;">Border:</label><input class="" type="text" id="207"
+                style="width:3.3em"><button>▼</button></span><button class="fitem bbtn">Clear</button><button
+              class="fitem bbtn">Help</button><button class="fitem bbtn">Tutorial</button><span class="form"
+              style="position:absolute;  right:0px"><span class="fitem bbmenu"><label class="flabel">Background:
+                </label><button class="fitem bactive" style="padding:2px"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMElEQVQ4T2P8////fwY8YM+ePfikGRhHDRgWYbB792686cDFxQV/Ohg1gIFx6IcBAPU7UXHPhMXmAAAAAElFTkSuQmCC"></button><button
+                  class="fitem" style="padding:2px"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAHklEQVQ4T2P8////fwYKAOOoAQyjYcAwGgYMwyIMACUfP9Eb4ExuAAAAAElFTkSuQmCC"></button><button
+                  class="fitem" style="padding:2px"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAHklEQVQ4T2NkYGD4z0ABYBw1gGE0DBhGw4BhWIQBAE5OEAELnjVHAAAAAElFTkSuQmCC"></button></span><span
+                class="fitem ddmenu"><select class="bbtn" id="dd208">
+                  <option value="0">New Layer</option>
+                  <option value="1">Raster Mask</option>
+                  <option value="2">Selection</option>
+                </select></span><button class="fitem bbtn">OK</button></span></div>
+          <div class="flexrow">
+            <div style="cursor:grab; position:relative;overflow:hidden;">
+              <canvas id="canv_old" class="canv" width="636" height="821"
+                style="width:508.8px; height:656.8px; display:block;">
+              </canvas>
+            </div>
+            <div style="cursor:grab; position:relative;overflow:hidden;">
+              <canvas id="canv_new" class="canv" width="636" height="821"
+                style="width:508.8px; height:656.8px; display:block;">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        j: null,
+        // this.j = y.w("div", "");
+        width: 0,
+        height: 0,
+        GO: {},
+        buffer: null,
+        rect: {
+          d: 600,
+          v: 813,
+          x: 0,
+          y: 0,
+        }
+      },
+      async mounted() {
+        let canv_old = document.getElementById('canv_old');
+        let ctx_old = canv_old.getContext('2d');
+        let res = await this.load('test/h1.jpg');
+        console.log(res, 'res')
+
+        const image = await this.loadImage('test/h1.jpg');
+        this.width = image.naturalWidth;
+        this.height = image.naturalHeight;
+        ctx_old.drawImage(image, 0, 0, this.width, this.height);
+        const imageData = ctx_old.getImageData(0, 0, this.width, this.height);
+        console.log(imageData.data, 'imageData.data')
+        // this.buffer = new Uint8Array(imageData.data);
+        // console.log(buffer)
+        // this.bE()
+
+      },
+      methods: {
+        load(path, responseType = 'arraybuffer') {
+          return new Promise(function (resolve, reject) {
+            let request = new XMLHttpRequest();
+            request.open("GET", path, true);
+            request.responseType = responseType;
+            request.onload = function (e) {
+              resolve(e.target.response);
+            };
+            request.send();
+          });
+        },
+        createElement(element, _class) {
+          let el = document.createElement(element);
+          if (_class != null)
+            el.setAttribute("class", _class);
+          return el
+        },
+        loadImage(src) {
+          return new Promise((resolve, reject) => {
+            var img = new Image();
+            img.onload = () => {
+              resolve(img)
+            };
+            img.src = src;
+          });
+        },
+        afn(N) {
+          return N + (N % 4 == 0 ? 0 : 4 - N % 4)
+        },
+        X() {
+          return this.width * this.height;
+        },
+        T(N, G) {
+          if (G == null)
+            G = !1;
+          if (!G)
+            N = this.afn(N);
+          try {
+            var b = new Uint8Array(N)
+          } catch (eU) {
+            alert("Not enough RAM! (need " + Math.round(N / (1 << 20)) + " MB)", 7e3);
+            throw "low_ram"
+          }
+          return b
+        },
+        hp(N, G, b) {
+          if (b == null)
+            b = 0;
+          var E = new Uint32Array(N.buffer)
+            , _ = E.length;
+          for (var T = 0; T < _; T++)
+            E[T] = E[T] & b | G
+        },
+        tb(N, G, b, E) {
+          var _ = N[G] - b[E]
+            , H = N[G + 1] - b[E + 1]
+            , F = N[G + 2] - b[E + 2];
+          return Math.sqrt(_ * _ + H * H + F * F) * (1 / 441.7)
+        },
+        xt(N) {
+          var G = N.length
+            , b = 0;
+          for (var T = 0; T < G; T++)
+            b = Math.max(b, N[T]);
+          var E = 1 / b;
+          for (var T = 0; T < G; T++)
+            N[T] = N[T] * E
+        },
+        UZ(N, G, b) {
+          var E = new Uint8Array(N.buffer)
+            , _ = Math.min(E.length / 4, G.length);
+          for (var T = 0; T < _; T++) {
+            G[T] = E[(T << 2) + b]
+          }
+        },
+        aaL(N, G, b, E, _) {
+          var H = b * E
+            , F = N.slice(0)
+            , f = N.slice(0);
+          for (var T = 0; T < H; T++)
+            _[T] = G[T] == 255 ? 0 : 65535;
+          this.xa(N, f, F, _, b, E);
+          this._h(N, f, F, _, b, E);
+          this.xa(N, f, F, _, b, E);
+          this._h(N, f, F, _, b, E);
+          return _
+        },
+        xa(N, G, b, E, _, H) {
+          for (var F = 1; F < _; F++)
+            this.Xo(F, -1, N, G, b, E);
+          for (var f = 1; f < H; f++) {
+            this.Xo(f * _, -_, N, G, b, E);
+            for (var F = 1; F < _; F++) {
+              var T = f * _ + F;
+              this.Xo(T, -1, N, G, b, E);
+              this.Xo(T, -_, N, G, b, E)
+            }
+          }
+        },
+        Xo(T, N, G, b, E, _) {
+          var H = T + N
+            , F = G[T]
+            , f = b[H]
+            , I = E[H];
+          if (f < F)
+            f = F;
+          else if (F < I)
+            I = F;
+          var V = f - I;
+          if (_[H] != 65535 && V < _[T]) {
+            _[T] = V;
+            b[T] = f;
+            E[T] = I
+          }
+        },
+        _h(N, G, b, E, _, H) {
+          for (var F = _ - 2; F >= 0; F--)
+            this.Xo(_ * H - _ + F, 1, N, G, b, E);
+          for (var f = H - 2; f >= 0; f--) {
+            this.Xo(f * _ + _ - 1, _, N, G, b, E);
+            for (var F = _ - 2; F >= 0; F--) {
+              var T = f * _ + F;
+              this.Xo(T, 1, N, G, b, E);
+              this.Xo(T, _, N, G, b, E)
+            }
+          }
+        },
+        N(B, j, r, O, z, D) {
+          var Q = []
+            , J = D
+            , t = D
+            , u = D >>> 2;
+          for (var R = 0; R < z; R++)
+            for (var k = 0; k < O; k++) {
+              var c = ~~((k + .5) * J)
+                , h = ~~((R + .5) * t)
+                , w = 1e9
+                , n = Math.max(0, c - u)
+                , x = Math.min(j, c + u + 1)
+                , L = Math.max(0, h - u)
+                , $ = Math.min(r, h + u + 1);
+              for (var X = L; X < $; X++)
+                for (var i = n; i < x; i++) {
+                  var q = this.G(B, j, i, X);
+                  if (q < w) {
+                    c = i;
+                    h = X;
+                    w = q
+                  }
+                }
+              var o = (h * j + c) * 4;
+              Q.push(c, h)
+            }
+          return Q
+        },
+        H(B, j, r, O) {
+          _++;
+          if (O < E)
+            E = O;
+          B[O].push(j, r)
+        },
+        F(B) {
+          _--;
+          while (B[E].length == 0)
+            E++
+        },
+        I(B, j, r, O, z, D, Q) {
+          var J = (z * j + O) * 4
+            , t = D[Q + 5]
+            , u = 1 / t
+            , R = B[J] * t - D[Q]
+            , k = B[J + 1] * t - D[Q + 1]
+            , c = B[J + 2] * t - D[Q + 2]
+            , h = O * t - D[Q + 3]
+            , w = z * t - D[Q + 4]
+            , n = Math.sqrt(R * R + k * k + c * c)
+            , x = Math.sqrt(h * h + w * w);
+          return ~~((n + r * x) * u + .5)
+        },
+        f(B, j, r) {
+          E = 0;
+          _ = 0;
+          var O = j * r
+            , z = Math.round(Math.min(j, r) / 50)
+            , h = 0
+            , w = 16;
+          if (z == 0)
+            z = 1;
+          var D = 30 / z
+            , Q = Math.floor(j / z)
+            , J = Math.floor(r / z)
+            , t = new Uint16Array(O);
+          for (var T = 0; T < O; T++)
+            t[T] = 65535;
+          var u = this.N(B, j, r, Q, J, z)
+            , R = u.length >>> 1;
+          if (R > 65535)
+            throw R;
+          var k = [];
+          for (var T = 0; T < 1e3 + r; T++)
+            k.push([]);
+          var c = [0, 1, 0, -1, -1, 0, 1, 0]
+            , n = Math.min(J, 5)
+            , x = new Uint32Array(R * 6);
+          for (var L = 0; L < J; L += n) {
+            var $ = Math.min(L + n + 1, J);
+            for (var X = L; X < $; X++)
+              for (var i = 0; i < Q; i++) {
+                var T = X * Q + i
+                  , q = T * 2
+                  , o = u[q + 1] << 16 | u[q];
+                this.H(k, o, T, u[q + 1] >>> w)
+              }
+            var s = Math.min(r, $ * z);
+            if (L + n >= J)
+              s = r;
+            while (_ != 0) {
+              this.F(k);
+              var g = k[E].pop()
+                , iO = k[E].pop()
+                , f1 = iO >>> 16
+                , gl = iO & 65535
+                , T = f1 * j + gl;
+              if (t[T] == 65535) {
+                var cS = g * 6
+                  , p = T << 2;
+                t[T] = g;
+                x[cS] += B[p];
+                x[cS + 1] += B[p + 1];
+                x[cS + 2] += B[p + 2];
+                x[cS + 3] += gl;
+                x[cS + 4] += f1;
+                x[cS + 5]++;
+                var ak = f1 >>> w;
+                if (f1 != s - 1 && t[T + j] == 65535)
+                  this.H(k, f1 + 1 << 16 | gl, g, this.I(B, j, D, gl, f1 + 1, x, cS) + ak);
+                if (f1 != 0 && t[T - j] == 65535)
+                  this.H(k, f1 - 1 << 16 | gl, g, this.I(B, j, D, gl, f1 - 1, x, cS) + ak);
+                if (gl != 0 && t[T - 1] == 65535)
+                  this.H(k, f1 << 16 | gl - 1, g, this.I(B, j, D, gl - 1, f1, x, cS) + ak);
+                if (gl != j - 1 && t[T + 1] == 65535)
+                  this.H(k, f1 << 16 | gl + 1, g, this.I(B, j, D, gl + 1, f1, x, cS) + ak)
+              }
+            }
+            if (s != f1) {
+              var cG = (L + n) * Q;
+              x.fill(0, cG * 6, (cG + Q) * 6);
+              for (var f1 = (L + n - 2) * z; f1 < s; f1++)
+                for (var gl = 0; gl < j; gl++) {
+                  var T = f1 * j + gl;
+                  if (t[T] >= cG) {
+                    t[T] = 65535
+                  }
+                }
+            }
+          }
+          return {
+            ml: t,
+            CA: R,
+            UG: x
+          }
+        },
+        G(B, j, r, O) {
+          var z = (O * j + r) * 4
+            , D = j * 4
+            , Q = this.b(B, z - 4, z) + this.b(B, z, z + 4)
+            , J = this.b(B, z - D, z) + this.b(B, z, z + D);
+          return Q + J
+        },
+        b(B, j, r) {
+          var O = B[j] - B[r]
+            , z = B[j + 1] - B[r + 1]
+            , D = B[j + 2] - B[r + 2];
+          return O * O + z * z + D * D
+        },
+        Qx() {
+          var G = 0
+            // , b = N.t[G]
+            , E = this.rect
+            , _ = E.d
+            , H = E.v
+            , F = _ * H
+            , f = this.buffer
+            , I = Date.now()
+            , V = this.T(F);
+          V.fill(128);
+          var U = this.f(f, _, H);
+          console.log(Date.now() - I);
+          var K = {
+            key: this.JA(),
+            sw: f,
+            // rect: E.clone(),
+            rect: E,
+            GF: _,
+            E6: H,
+            P6: 12,
+            a7V: !1,
+            Nm: V,
+            Y9: U,
+            A: this.T(F),
+            fQ: null,
+            VT: null,
+            o9: null
+          };
+          this.WH(K);
+          return K
+        },
+        JA() {
+          var G = 0
+            // , b = N.t[G]
+            , E = this.rect
+            , _ = E.d
+            , H = E.v
+            , F = _ * H
+            , f = this.buffer;
+          return [G, E.x, E.y, _, H, f[0], f[1], f[2], f[3]].join(",")
+        },
+        V(B, j, r, O) {
+          var z = 1 / B[r + 5]
+            , D = 1 / B[O + 5]
+            , Q = B[r] * z - B[O] * D
+            , J = B[r + 1] * z - B[O + 1] * D
+            , t = B[r + 2] * z - B[O + 2] * D
+            , u = B[r + 3] * z - B[O + 3] * D
+            , R = B[r + 4] * z - B[O + 4] * D
+            , k = Math.sqrt(Q * Q + J * J + t * t)
+            , c = Math.sqrt(u * u + R * R);
+          return ~~(k + j * c + .5)
+        },
+        WH(N, G) {
+          var b = N.GF
+            , E = N.E6
+            , _ = 0
+            , H = 0
+            , F = Date.now()
+            , f = N.fQ != null && this.a6O(N.Y9.ml, N.fQ.ml, N.fQ.CA, N.Nm);
+          _ = Date.now() - F;
+          F = Date.now();
+          if (!f && !N.a7V) {
+            N.fQ = this.Pz(N.Y9, b, E, N.Nm, N.P6);
+            if (!this.a6O(N.Y9.ml, N.fQ.ml, N.fQ.CA, N.Nm)) {
+              N.a7V = !0;
+              console.log("conflict")
+            }
+            N.VT = this.an$(N.sw, b, E, N.fQ.ml, N.fQ.CA);
+            N.o9 = [N.VT[0].slice(0), []];
+            H = Date.now() - F;
+            F = Date.now()
+          }
+          var F = Date.now();
+          if (G) {
+            N.o9[0].set(N.VT[0]);
+            var I = N.VT[1]
+              , V = N.o9[1];
+            for (var U = 0; U < I.length; U++)
+              V[U] = I[U].slice(0);
+            this.aiL(N.fQ.ml, b, E, N.fQ.CA, N.Nm, N.A, N.o9)
+          }
+        },
+        aiL(B, j, r, O, z, D, Q) {
+          var J = j * r
+            , t = Q[0]
+            , G = Q[1]
+            , u = new UnionFind(O)
+            , R = P(z, B, O, J)
+            , k = -1
+            , c = !0
+            , h = 0;
+          for (var T = 0; T < O; T++)
+            if (R[T] == 1) {
+              if (k == -1)
+                k = T;
+              else
+                u.link(T, k)
+            }
+          if (k == -1) {
+            for (var T = 0; T < J; T++)
+              D[T] = z[T] == 255 ? 255 : 0;
+            return
+          }
+          while (c) {
+            while (c) {
+              c = !1;
+              for (var T = 0; T < O; T++) {
+                if (R[T] == 0) {
+                  var w = A(G[T]);
+                  if (R[w] == 1) {
+                    R[T] = R[w];
+                    c = !0;
+                    u.link(T, w)
+                  }
+                }
+              }
+            }
+            c = !0;
+            h = 0;
+            while (c) {
+              c = !1;
+              for (var T = 0; T < O; T++) {
+                if (R[T] == 0) {
+                  var w = A(G[T]);
+                  if (R[w] == 0) {
+                    var n = T * 4400
+                      , x = w * 4400;
+                    for (var L = 0; L < 4400; L += 2) {
+                      t[n + L] += t[x + L];
+                      t[n + L + 1] += t[x + L + 1]
+                    }
+                    S(G, t, T, w);
+                    h++;
+                    R[w] = 3;
+                    c = !0;
+                    u.link(T, w)
+                  }
+                }
+              }
+            }
+            c = h != 0
+          }
+          var $ = u.find(k);
+          for (var T = 0; T < O; T++)
+            R[T] = u.find(T) == $ ? 255 : 0;
+          for (var T = 0; T < J; T++) {
+            D[T] = R[B[T]]
+          }
+          for (var T = 0; T < J; T++) {
+            var w = z[T];
+            if (w == 0 || w == 255)
+              D[T] = w
+          }
+        },
+        K(B, j) {
+          var T = 0
+            , r = B.length;
+          while (T != r && B[T] != j)
+            T += 2;
+          return T == r ? -1 : T
+        },
+        Z(B, j, r) {
+          var O = 0
+            , z = 4096
+            , D = j * 4400
+            , Q = r * 4400;
+          for (var J = 0; J < 16; J++) {
+            if (B[D + 4360 + J] == 0 || B[Q + 4360 + J] == 0)
+              continue;
+            for (var t = 0; t < 16; t++) {
+              var u = J << 4 | t;
+              if (B[D + 4100 + u] == 0 || B[Q + 4100 + u] == 0)
+                continue;
+              var R = D + (u << 4)
+                , k = Q + (u << 4);
+              for (var T = 0; T < 16; T++)
+                O += Math.sqrt(B[R + T] * B[k + T])
+            }
+          }
+          var c = O / Math.sqrt(B[D + z] * B[Q + z]);
+          return ~~(999.99999 * c)
+        },
+        an$(B, j, r, O, z) {
+          var D = new Uint32Array(z * 4400)
+            , G = [];
+          for (var T = 0; T < z; T++)
+            G.push([]);
+          for (var Q = 0; Q < r; Q++)
+            for (var J = 0; J < j; J++) {
+              var T = Q * j + J
+                , t = T << 2
+                , u = O[T]
+                , R = 0
+                , k = B[t] >>> 4
+                , c = B[t + 1] >>> 4
+                , h = B[t + 2] >>> 4;
+              D[u * 4400 + (k << 8 | c << 4 | h)]++;
+              D[u * 4400 + 4096]++;
+              D[u * 4400 + 4100 + (k << 4 | c)]++;
+              D[u * 4400 + 4360 + k]++;
+              if (J != 0 && (R = O[T - 1]) != u && this.K(G[u], R) == -1) {
+                G[u].push(R, 0);
+                G[R].push(u, 0)
+              }
+              if (Q != 0 && (R = O[T - j]) != u && this.K(G[u], R) == -1) {
+                G[u].push(R, 0);
+                G[R].push(u, 0)
+              }
+            }
+          for (var T = 0; T < z; T++) {
+            var h = G[T];
+            for (var w = 0; w < h.length; w += 2)
+              h[w + 1] = this.Z(D, T, h[w])
+          }
+          return [D, G]
+        },
+        a6O(B, j, r, O) {
+          var z = this.T(r)
+            , D = j.length
+            , Q = 0;
+          for (var T = 0; T < D && Q != 3; T++) {
+            var J = O[T];
+            if (J == 0 || J == 255) {
+              var t = j[T]
+                , u = 2 - (J >>> 7);
+              z[t] = Q = z[t] | u
+            }
+          }
+          return Q != 3
+        },
+        P(B, j, r, O) {
+          var z = this.T(r);
+          for (var T = 0; T < O; T++) {
+            var D = B[T];
+            if (D == 0 || D == 255)
+              z[j[T]] = 2 - (D >>> 7)
+          }
+          return z
+        },
+
+        Pz(B, j, r, O, z) {
+          var D = B.CA
+            , Q = j * r
+            , J = B.UG
+            , t = B.ml
+            , u = this.P(O, t, D, Q)
+            , R = new UnionFind(D)
+            , x = 0;
+          for (var k = 1; k < r; k++)
+            for (var c = 1; c < j; c++) {
+              var T = k * j + c
+                , h = t[T]
+                , w = 0;
+              if ((w = t[T - 1]) != h && u[w] == u[h] && this.V(J, 0, h * 6, w * 6) < z)
+                R.link(h, w);
+              if ((w = t[T - j]) != h && u[w] == u[h] && this.V(J, 0, h * 6, w * 6) < z)
+                R.link(h, w)
+            }
+          var n = new Uint16Array(D);
+          n.fill(65535);
+          var L = new Uint16Array(D);
+          for (var T = 0; T < D; T++) {
+            var $ = R.find(T);
+            if (n[$] == 65535)
+              n[$] = x++;
+            L[T] = n[$]
+          }
+          var X = new Uint16Array(Q);
+          for (var T = 0; T < Q; T++)
+            X[T] = L[t[T]];
+          return {
+            ml: X,
+            CA: x
+          }
+        },
+
+        getSelection(N, G, b) {
+          debugger
+          var E = G * b
+            , _ = this.T(E)
+            , H = !1
+            , F = Math.round(b * .7)
+            , f = 1
+            , I = new Uint32Array(12)
+            , V = this.T(12);
+          for (var U = 0; U < F; U++)
+            for (var K = 0; K < G; K++) {
+              if (K < f || U < f || K > G - f - 1 || U > b - f - 1) {
+                var T = U * G + K
+                  , e = T << 2
+                  , P = 0;
+                if (U < f)
+                  P = 4;
+                else if (K > G - f - 1)
+                  P = 8;
+                I[P] += N[e];
+                I[P + 1] += N[e + 1];
+                I[P + 2] += N[e + 2];
+                I[P + 3]++;
+                _[T] = 255
+              }
+            }
+          for (var T = 0; T < 12; T += 4)
+            for (var A = 0; A < 3; A++)
+              V[T + A] = I[T + A] / I[T + 3];
+          var S = new Float32Array(E);
+          for (var T = 0; T < E; T++) {
+            var e = T * 4
+              , Z = this.tb(N, e, V, 0)
+              , B = this.tb(N, e, V, 4)
+              , j = this.tb(N, e, V, 8)
+              , r = Math.max(Z, Math.max(B, j));
+            S[T] = Z + B + j - r
+          }
+          this.xt(S);
+          var O = Date.now()
+            , z = new Float32Array(E)
+            , D = []
+            , Q = this.T(E);
+          for (var T = 0; T < 3; T++) {
+            this.UZ(N, Q, T);
+            var J = new Uint16Array(E);
+            D.push(J);
+            this.aaL(Q, _, G, b, J)
+          }
+          if (H)
+            console.log("MBD", Date.now() - O);
+          O = Date.now();
+          for (var T = 0; T < E; T++)
+            z[T] = D[0][T] + D[1][T] + D[2][T];
+          this.xt(z);
+          for (var T = 0; T < E; T++)
+            z[T] += .4 * S[T];
+          var t = G >>> 1
+            , F = b >>> 1
+            , u = 1 / Math.sqrt(t * t + F * F);
+          for (var U = 0; U < b; U++)
+            for (var K = 0; K < G; K++) {
+              var R = K - t
+                , k = U - F
+                , c = 1 - Math.sqrt(R * R + k * k) * u;
+              z[U * G + K] *= c
+            }
+          if (H)
+            console.log("Centeredness", Date.now() - O);
+          O = Date.now();
+          for (var T = 0; T < E; T++)
+            _[T] = z[T] * 255;
+          var h = Math.round(G / 120)
+            , w = Math.round(h * .8);
+          if (H)
+            console.log(h, w);
+          l.tj.Um(_, Q, G, b, h, l.tj.zS, []);
+          _.set(Q);
+          if (H)
+            console.log("erosion", Date.now() - O);
+          O = Date.now();
+          for (var T = 0; T < E; T++)
+            z[T] = _[T];
+          this.xt(z);
+          var n = this.T(256);
+          for (var T = 0; T < 256; T++)
+            n[T] = 256 / (1 + Math.exp(-20 * (T / 255 - .5)));
+          for (var T = 0; T < E; T++) {
+            var x = ~~(z[T] * 255 + .5);
+            _[T] = n[x]
+          }
+          if (H)
+            console.log("Simoid", Date.now() - O);
+          O = Date.now();
+          return _
+        },
+        aw() {
+          var N = this.GO, _, f, I = 0, V = 0, U = 0;
+          this.Ac();
+          var G = N.rect
+            , b = G.d
+            , E = G.v
+            , H = l.T(G.X())
+            , F = N.TX;
+          l.UZ(N.YS, H, 0);
+          for (var T = 0; T < H.length; T++) {
+            if (F[(T << 2) + 3] != 255)
+              continue;
+            var K = H[T];
+            if (K == 0)
+              I++;
+            else if (K == 255)
+              V++;
+            else
+              U++
+          }
+          if (I * V * U != 0) {
+            if (this.ip == 0)
+              f = l.M8.M8(G, F, H);
+            else {
+              var e = this._Y.u();
+              for (var P = 1; P < E; P++)
+                for (var A = 1; A < b; A++) {
+                  var T = P * b + A
+                    , S = H[T]
+                    , Z = H[T - 1];
+                  if (S == 0 && Z == 255 || S == 255 && Z == 0) {
+                    _ = "The Red and Green should never touch! Erase it with Grey.";
+                    break
+                  }
+                }
+              var B = Date.now()
+                , j = this.GO.a5w;
+              l.g6(H, j.Nm);
+              d.Ll.WH(j, !0);
+              var r = Math.ceil(this.q1.u() / 2);
+              if (r == 0) {
+                f = F.slice(0);
+                l.Uz(j.A, f, 3)
+              } else {
+                var O = j.A.slice(0)
+                  , z = j.A.slice(0);
+                for (var D = 0; D < r; D++) {
+                  for (var P = 1; P < E - 1; P++)
+                    for (var A = 1; A < b - 1; A++) {
+                      var T = P * G.d + A
+                        , Q = O[T];
+                      if (O[T - b] != Q || O[T - 1] != Q || O[T + 1] != Q || O[T + b] != Q)
+                        z[T] = 128;
+                      else
+                        z[T] = Q
+                    }
+                  var J = O;
+                  O = z;
+                  z = J
+                }
+                f = l.M8.M8(G, F, O, 20, !1)
+              }
+            }
+          } else {
+            f = F.slice(0);
+            l.Uz(H, f, 3)
+          }
+          for (var T = 3; T < f.length; T += 4)
+            if (f[T] > F[T])
+              f[T] = F[T];
+          if (G.nJ(N.rect))
+            N.sR = f;
+          else
+            l.Da(f, G, N.sR, N.rect);
+          this.eh();
+          if (_)
+            alert(_, 4e3)
+        },
+
+    Ac(N) {
+      debugger
+      var G = this.GO
+        , b = G.kU;
+      l.Da(G.TX, G.rect, G.$r, G.rect, b, !0);
+      var E = G.YS;
+      if (this.ip == 1) {
+        var _ = new Uint32Array(256);
+        _[0] = 4278190335;
+        _[255] = 4278255360;
+        var H = G.rect.X();
+        E = E.slice(0);
+        var F = new Uint32Array(E.buffer);
+        for (var T = 0; T < H; T += 2) {
+          F[T] = _[F[T] & 255];
+          F[T + 1] = _[F[T + 1] & 255]
+        }
+      }
+      l.Q.E9("norm", E, G.rect, G.$r, G.rect, b, .3);
+      this.XO.F([{
+        Rm: G.rect,
+        data: G.$r.buffer
+      }])
+    },
+      
+    bE() {
+      var E = this.rect;
+      var _ = E.d
+        , H = E.v;
+      var F = 1;
+      var f = this.T(this.X());
+      var I = new Float32Array(this.X());
+      if (F == 0) {
+
+      } else {
+        I.fill(1e9);
+      }
+      E.x = E.y = 0;
+      this.GO = {
+        rect: E,
+        TX: this.buffer,
+        MF: f,
+        NN: I,
+        $r: this.T(this.X() * 4),
+        Md: this.T(this.X() * 4),
+        YS: this.T(this.X() * 4),
+        yN: null,
+        sR: null,
+        kU: E,
+        a5w: {}
+      };
+      if (F == 0) {
+        this.uC();
+      } else {
+        debugger
+        this.GO.a5w = this.Qx();
+        var P = this.GO.YS;
+        this.hp(P, 4287137928);
+        var A = this.getSelection(this.buffer, _, H)
+          , S = Math.round(_ / 60)
+          , Z = Math.round(.7 * H);
+        for (var U = 0; U < H; U++)
+          for (var K = 0; K < _; K++) {
+            var B = (U * _ + K) * 4
+              , j = A[B >>> 2];
+            j = j > 128 ? 255 : 128;
+            if (U < S || U < Z && (K < S || K > _ - 1 - S))
+              j = 0;
+            P[B] = P[B + 1] = P[B + 2] = j
+          }
+        this.aw()
+      }
+      console.log(this.GO)
+    }
+      }
+    })
+  </script>
+</body>
+
+</html>
